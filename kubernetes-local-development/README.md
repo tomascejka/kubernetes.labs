@@ -9,6 +9,8 @@ Jak lze v k8 localne vyvijet, jake nastroje lze pouzivat apod.
 ### Sources - tools
 + https://www.devspace.sh/
 + https://www.devspace.sh/docs/getting-started/introduction
++ https://skaffold.dev/docs/ << Skaffold handles the workflow for building, pushing and deploying your application, allowing you to focus on what matters most: writing code.
++ https://garden.io/ << Garden combines rapid development, testing, and DevOps automation in one tool. Get realistic cloud-native environments for every occasion and never worry about the difference between dev, CI and prod again.
 + https://podman-desktop.io/ << neni jenom docker desktop
 + https://gefyra.dev/ << Gefyra runs local code in any Kubernetes cluster without the build and push cycle. It overlays containers in the cluster making code changes immediately available.
 + https://www.telepresence.io/docs/latest/quick-start/ << Telepresence is an open source tool that enables you to set up remote development environments for Kubernetes where you can still use all of your favorite local tools like IDEs, debuggers, and profilers.
