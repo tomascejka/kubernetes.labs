@@ -1,0 +1,13 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: testjobdemo
+spec:
+  template:
+    spec:
+      containers:
+      - name: testjob
+        image: alpine:latest
+        command: ["ping", "-c", "10",  "8.8.8.8"]
+      restartPolicy: Never
+  backoffLimit: 4

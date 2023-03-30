@@ -1,0 +1,43 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: helloworld
+spec:
+  ports:
+    - port: 80
+      name: 80-tcp
+      protocol: TCP
+      targetPort: 80
+  selector:
+    com.docker.project: helloworld
+  type: LoadBalancer
+status:
+  loadBalancer: {}
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helloworld
+  labels:
+    com.docker.project: helloworld
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      com.docker.project: helloworld
+  template:
+    metadata:
+      labels:
+        com.docker.project: helloworld
+    spec:
+      containers:
+        - name: hello
+          image: tomascejka/go-hello-world
+          ports:
+            - containerPort: 80
+              protocol: TCP
+          imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+status: {}
