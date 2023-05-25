@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: echo-command
+spec:
+  containers:
+  - name: my-pod
+    image: busybox:1.28
+    command: ['sh', '-c', 'echo The app is running! && sleep 3600']  
+  initContainers:
+  - name: init-pod
+    image: bitnami/kubectl:1.26.4
+    command: ['sh', '-c', 'until kubectl get job check-status -o jsonpath="{.status.succeeded}"; do echo waiting for my-job; sleep 5; done;']

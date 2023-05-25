@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: get-hash
+spec:
+  ttlSecondsAfterFinished: 120
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: get-hash
+          image: busybox
+          command: ["sh", "-c"]
+          args:
+            - |
+              echo "the podname is: $HOSTNAME";
+              echo "the hash is: ${HOSTNAME##*-}"

@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: check-status
+spec:
+  template:
+    spec:
+      containers:
+      - name: my-job
+        image: alpine:latest
+        # omezena smyscka, max. pocet volani omezeno, napr. ping -c 10 (max 10 volani)
+        command: ["ping", "-c", "30",  "8.8.8.8"]
+        # nekonecna smycka - pro test
+        #command: ["ping", "8.8.8.8"]
+      restartPolicy: Never
+  backoffLimit: 4
