@@ -7,7 +7,7 @@
 # - awk si vezme hodnotu v prvni sloupci (NAME) to je pod_name
 # - grep zajisti, ze ziskame nazev, kt. predpokladame (viz. popis vyse)
 # 
-$pod_name=kubectl get pods --no-headers=true | awk '{print $1}' | grep testjob
+$pod_name=kubectl get pods --no-headers=true | awk '{print $1}' | grep echo-command
 
 if($null -eq $pod_name) {# pokud je pod_name null nebo empty
     Write-Output 'pod_name is null/empty - is pod running?'

@@ -9,8 +9,8 @@ spec:
       - name: my-job
         image: alpine:latest
         # omezena smyscka, max. pocet volani omezeno, napr. ping -c 10 (max 10 volani)
-        command: ["ping", "-c", "30",  "8.8.8.8"]
-        # nekonecna smycka - pro test
-        #command: ["ping", "8.8.8.8"]
+        #command: ["ping", "-c", "60",  "8.8.8.8"]
+        # nekonecna smycka simuluje job, kt. nedobehne (negativny scenar)
+        command: ["ping", "8.8.8.8"]
       restartPolicy: Never
   backoffLimit: 1
