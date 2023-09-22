@@ -1,0 +1,33 @@
+apiVersion: v1
+data:
+  password: UyFCXCpkJHpEc2I9
+  username: VG9tYXNzbyANCg==
+kind: Secret
+metadata:
+  name: db-pass-pod
+  namespace: default
+---
+kind: Pod
+apiVersion: v1
+metadata:
+  name: busybox-sec-pod
+  namespace: default
+spec:
+  containers:
+    - name: busybox
+      image: registry.k8s.io/e2e-test-images/busybox:1.29-1 
+      command:
+        - "/bin/sleep"
+        - "10000"
+      env:
+      - name: SECRET_USERNAME
+        valueFrom:
+          secretKeyRef:
+            name: db-pass-pod
+            key: username
+      env:
+      - name: SECRET_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: db-pass-pod
+            key: password
